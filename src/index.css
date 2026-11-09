@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  button,
+  select,
+  input,
+  textarea {
+    display: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  section {
+    break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+}
