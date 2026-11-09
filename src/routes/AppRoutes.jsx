@@ -10,8 +10,8 @@ import CreateProject from "../pages/projects/CreateProject";
 import Documents from "../pages/documents/Documents";
 import Formulator from "../pages/formulation/Formulation";
 import QualityManagement from "../pages/quality/QualityManagement";
-// import RawMaterials from "../pages/formulation/RawMaterials";
-// import FinishedGoods from "../pages/formulation/FinishedGoods";
+import RawMaterials from "../pages/raw-materials/RawMaterials";
+import FinishedGoods from "../pages/finished-goods/FinishedGoods";
 // import ApprovalsInbox from "../pages/approvals/ApprovalsInbox";
 import Specifications from "../pages/specifications/Specifications";
 import Labelling from "../pages/labelling/Labelling";
@@ -53,11 +53,11 @@ function AppRoutes() {
         <Route path="/labelling" element={<Labelling />} />
 
         <Route path="/shelf-life" element={<ShelfLife />} />
-        {/* 
-
         <Route path="/raw-materials" element={<RawMaterials />} />
 
         <Route path="/finished-goods" element={<FinishedGoods />} />
+        
+        {/* 
 
         <Route path="/quality" element={<div>Quality & Regulatory</div>} />
 

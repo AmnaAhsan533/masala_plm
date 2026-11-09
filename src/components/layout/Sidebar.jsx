@@ -74,6 +74,11 @@ const navigation = [
       path: "/labelling",
       icon: Tags,
     },
+    {
+      name: "Documents",
+      path: "/documents",
+      icon: FileText,
+    }
     ],
   },
   {
