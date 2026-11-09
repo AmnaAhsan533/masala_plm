@@ -1,4 +1,3 @@
-
 export const rawMaterials = [
   {
     id: "RM-001",
@@ -77,4 +76,5 @@ export const rawMaterials = [
     allergen: false,
     allergenName: "",
   },
+  
 ];

@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from "react";
 import { Plus, Package } from "lucide-react";
 
@@ -13,14 +12,28 @@ import RawMaterialDetails from "../../components/raw-materials/RawMaterialDetail
 const STORAGE_KEY = "masalaplm-raw-materials";
 
 export default function RawMaterials() {
-  const [materials, setMaterials] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : initialRawMaterials;
-    } catch {
-      return initialRawMaterials;
-    }
-  });
+  
+const [materials, setMaterials] = useState(() => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (!saved) return initialRawMaterials;
+
+    const savedMaterials = JSON.parse(saved);
+
+    // Keep existing saved records and add any new sample records.
+    const savedIds = new Set(savedMaterials.map((item) => item.id));
+
+    const newSampleMaterials = initialRawMaterials.filter(
+      (item) => !savedIds.has(item.id)
+    );
+
+    return [...savedMaterials, ...newSampleMaterials];
+  } catch {
+    return initialRawMaterials;
+  }
+});
+
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
@@ -34,10 +47,28 @@ export default function RawMaterials() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(materials));
   }, [materials]);
 
-  const categories = useMemo(
-    () => [...new Set(materials.map((item) => item.category))].sort(),
-    [materials]
-  );
+  
+const categories = useMemo(() => {
+  const standardCategories = [
+    "Spices",
+    "Flour",
+    "Seasonings",
+    "Additives",
+    "Other",
+  ];
+
+  const additionalCategories = materials
+    .map((item) => item.category)
+    .filter(
+      (item) => item && !standardCategories.includes(item)
+    );
+
+  return [
+    ...standardCategories,
+    ...new Set(additionalCategories),
+  ];
+}, [materials]);
+
 
   const filteredMaterials = useMemo(() => {
     return materials.filter((item) => {
