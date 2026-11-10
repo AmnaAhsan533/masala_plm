@@ -6,7 +6,7 @@ export const mockProjects = [
     category: "Seasoning",
     productType: "New Product",
     description: "Development of a premium chicken seasoning blend.",
-    projectLead: "Ahmed Khan",
+    projectLead: "Ali Khan",
     priority: "High",
     status: "In Progress",
     currentStage: 6,

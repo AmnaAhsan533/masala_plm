@@ -13,10 +13,13 @@ const pageTitles = {
   "/formulator": "Recipe Formulation",
   "/raw-materials": "Raw Materials",
   "/finished-goods": "Finished Goods",
-  "/quality": "Quality & Regulatory",
+  "/quality": "Quality",
+  "/regulatory": "Regulatory",
   "/approvals": "Approvals",
   "/specifications": "Specifications",
   "/settings": "Settings",
+  "/documents": "Documents",
+  "/shelf-life": "Shelf Life",
 };
 
 function Header({ onMenuClick }) {

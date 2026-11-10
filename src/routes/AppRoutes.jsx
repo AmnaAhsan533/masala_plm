@@ -1,4 +1,4 @@
-
+import Login from "../pages/auth/Login";
 import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
@@ -16,10 +16,13 @@ import FinishedGoods from "../pages/finished-goods/FinishedGoods";
 import Specifications from "../pages/specifications/Specifications";
 import Labelling from "../pages/labelling/Labelling";
 import ShelfLife from "../pages/shelf-life/ShelfLife";
+import RegulatoryCompliance from "../pages/regulatory/RegulatoryCompliance";
 
 function AppRoutes() {
   return (
     <Routes>
+        <Route path="/login" element={<Login />} />
+
       <Route element={<MainLayout />}>
 
         <Route path="/" element={<Dashboard />} />
@@ -56,10 +59,13 @@ function AppRoutes() {
         <Route path="/raw-materials" element={<RawMaterials />} />
 
         <Route path="/finished-goods" element={<FinishedGoods />} />
+
+        <Route
+          path="/regulatory"
+          element={<RegulatoryCompliance />}
+        />
         
         {/* 
-
-        <Route path="/quality" element={<div>Quality & Regulatory</div>} />
 
         <Route path="/approvals" element={<ApprovalsInbox />} />
 

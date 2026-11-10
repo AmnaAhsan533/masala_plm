@@ -2,7 +2,7 @@
 export const employees = [
   {
     id: "EMP001",
-    name: "Ahmed Khan",
+    name: "Ali Khan",
     department: "R&D",
     designation: "Food Technologist",
   },

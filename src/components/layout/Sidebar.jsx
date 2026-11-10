@@ -1,18 +1,20 @@
-import { NavLink } from "react-router-dom";
+
+import { NavLink, useNavigate } from "react-router-dom";
+
 import {
   LayoutDashboard,
   FolderKanban,
   FlaskConical,
   Boxes,
   ShieldCheck,
-  ClipboardCheck,
   FileText,
-  Users,
   Settings,
   X,
   ChevronRight,
   Tags,
   CalendarClock,
+  Scale,
+  LogOut,
 } from "lucide-react";
 
 const navigation = [
@@ -52,50 +54,66 @@ const navigation = [
     ],
   },
   {
-    title: "QUALITY & COMPLIANCE",
+    title: "PRODUCT MANAGEMENT",
     items: [
-      {
-        name: "Quality & Regulatory",
-        path: "/quality",
-        icon: ShieldCheck,
-      },
-      {
-        name: "Approvals",
-        path: "/approvals",
-        icon: ClipboardCheck,
-      },
       {
         name: "Specifications",
         path: "/specifications",
         icon: FileText,
       },
       {
-      name: "Labelling & Nutrition",
-      path: "/labelling",
-      icon: Tags,
-    },
-    {
-      name: "Documents",
-      path: "/documents",
-      icon: FileText,
-    }
+        name: "Labelling & Nutrition",
+        path: "/labelling",
+        icon: Tags,
+      },
+      {
+        name: "Documents",
+        path: "/documents",
+        icon: FileText,
+      },
     ],
   },
   {
-  title: "Shelf Life Management",
-  items:[
-    {
-      name: "Shelf Life",
-      path: "/shelf-life",
-      icon: CalendarClock,
-    }
-    
-  ]
-  
-},
+    title: "QUALITY MANAGEMENT",
+    items: [
+      {
+        name: "Quality",
+        path: "/quality",
+        icon: ShieldCheck,
+      },
+    ],
+  },
+  {
+    title: "REGULATORY COMPLIANCE",
+    items: [
+      {
+        name: "Regulatory",
+        path: "/regulatory",
+        icon: Scale,
+      },
+    ],
+  },
+  {
+    title: "Shelf Life Management",
+    items: [
+      {
+        name: "Shelf Life",
+        path: "/shelf-life",
+        icon: CalendarClock,
+      },
+    ],
+  },
 ];
 
 function Sidebar({ isOpen, onClose }) {
+  // Hooks must be called inside the component
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onClose();
+    navigate("/login");
+  };
+
   return (
     <>
       {/* Mobile backdrop */}
@@ -192,6 +210,7 @@ function Sidebar({ isOpen, onClose }) {
             Settings
           </NavLink>
 
+          {/* Admin Profile */}
           <div className="mt-4 flex items-center gap-3 rounded-lg bg-gray-50 p-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 font-semibold text-orange-700">
               AD
@@ -206,6 +225,16 @@ function Sidebar({ isOpen, onClose }) {
               </p>
             </div>
           </div>
+
+          {/* Logout */}
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="mt-2 flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 transition hover:bg-red-50"
+          >
+            <LogOut size={18} />
+            Logout
+          </button>
         </div>
       </aside>
     </>
